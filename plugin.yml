@@ -1,0 +1,21 @@
+name: RankSystem
+version: 1.0.0
+api: 5.0.0
+main: RankSystem\Main
+author: SasoriDev
+commands:
+  rank:
+    description: Open the rank UI.
+    usage: "/rank"
+    permission: ranksystem.command.rank
+  rankxp:
+    description: Give XP to a player for ranking.
+    usage: "/rankxp <player> <amount>"
+    permission: ranksystem.command.rankxp
+permissions:
+  ranksystem.command.rank:
+    description: Allows players to use the /rank command.
+    default: true
+  ranksystem.command.rankxp:
+    description: Allows players to use the /rankxp command.
+    default: true

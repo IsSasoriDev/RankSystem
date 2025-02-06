@@ -1,0 +1,25 @@
+ranks:
+  "E Ranker":
+    min_xp: 0
+    max_xp: 100
+    color: "§7"
+  "D Ranker":
+    min_xp: 101
+    max_xp: 500
+    color: "§a"
+  "C Ranker":
+    min_xp: 501
+    max_xp: 1000
+    color: "§9"
+  "B Ranker":
+    min_xp: 1001
+    max_xp: 2000
+    color: "§e"
+  "A Ranker":
+    min_xp: 2001
+    max_xp: 5000
+    color: "§6"
+  "S Ranker":
+    min_xp: 5001
+    max_xp: 999999
+    color: "§c"
