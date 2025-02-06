@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace RankSystem;
 
 use pocketmine\player\Player;
@@ -9,10 +11,8 @@ class RankManager {
 
     private Config $config;
     private Config $playerData;
-    private Main $plugin;
 
-    public function __construct(Main $plugin, Config $config) {
-        $this->plugin = $plugin;
+    public function __construct(private Main $plugin, Config $config) {
         $this->config = $config;
         $this->playerData = new Config($this->plugin->getDataFolder() . "playerData.yml", Config::YAML);
     }
@@ -37,7 +37,7 @@ class RankManager {
         $currentXP = $this->getXP($player);
         $newXP = $currentXP + $amount;
         $this->playerData->set($name, $newXP);
-        $this->playerData->save(); // Save the data to the file
+        $this->playerData->save();
     }
 
     public function checkRankUp(Player $player): ?string {
@@ -59,6 +59,14 @@ class RankManager {
     }
 
     public function savePlayerData(): void {
-        $this->playerData->save(); // Save player data to the file
+        $this->playerData->save();
+    }
+    public function savePlayerStats(string $playerName, array $stats): void {
+        $this->playerData->set($playerName . "_stats", $stats);
+        $this->playerData->save();
+    }
+
+    public function loadPlayerStats(string $playerName): array {
+        return $this->playerData->get($playerName . "_stats", ["deaths" => 0, "kills" => 0, "playtime" => 0]);
     }
 }
